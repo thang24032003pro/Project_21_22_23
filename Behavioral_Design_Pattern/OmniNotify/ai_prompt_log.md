@@ -1,0 +1,12 @@
+
+## Câu hỏi 1: Đánh giá mối quan hệ Tight Coupling & Switch-case Anti-pattern
+*   **Prompt gửi AI:** *"Trong lập trình hướng đối tượng, sự kết dính chặt chẽ (Tight Coupling) giữa các class là gì? Tại sao việc sử dụng câu lệnh switch-case để kiểm tra kiểu đối tượng thường bị coi là một 'Anti-pattern' (Mẫu thiết kế tồi) khi hệ thống cần mở rộng?"*
+*   **AI phản hồi tóm tắt:** Tight Coupling xảy ra khi một class nắm giữ quá nhiều thông tin về cấu trúc hoặc cách thức hoạt động của class khác. Việc dùng `switch-case` kiểm tra kiểu (type code) ép hệ thống phải thay đổi thủ công mỗi lần phát sinh loại đối tượng mới, phá vỡ tính đóng gói và tính đa hình của hướng đối tượng, làm tăng chi phí bảo trì và rủi ro kiểm thử diện rộng.
+
+## Câu hỏi 2: Giải pháp Đa hình & Dependency Injection
+*   **Prompt gửi AI:** *"Khi thiết kế một hệ thống bằng Interface, làm thế nào tính Đa hình (Polymorphism) trong Java giúp phương thức gọi (caller) không cần quan tâm đến đối tượng thực sự đang thực thi phía dưới là Email hay SMS?"*
+*   **AI phản hồi tóm tắt:** Bằng cách lập trình hướng giao diện (Program to an Interface, not an Implementation), caller (`NotificationService`) chỉ giao tiếp với kiểu trừu tượng `MessageSender`. Nhờ Đa hình, tại thời điểm chạy (runtime), JVM sẽ tự động ánh xạ lời gọi `.send()` tới lớp cụ thể đang được gán. Điều này loại bỏ hoàn toàn các cấu trúc rẽ nhánh `if-else` và tách rời sự phụ thuộc trực tiếp.
+
+## Câu hỏi 3: Biện luận bảo vệ thiết kế trước Product Manager (PM)
+*   **Câu hỏi từ PM:** *"Mặc dù bỏ được switch-case ở Service lõi, nhưng ở hàm Main người dùng vẫn phải tự chọn khởi tạo đối tượng cụ thể nào (như `new EmailSender()`). Vậy việc thiết kế phức tạp thêm Interface có thực sự 'đáng tiền' không?"*
+*   **Câu trả lời biện luận:** Rất đáng tiền. Việc khởi tạo đối tượng (`new`) là hoạt động cấu hình hệ thống (Creational), trong khi logic gửi tin là hoạt động nghiệp vụ (Behavioral). Việc chuyển thao tác khởi tạo ra ngoài giúp bảo vệ tuyệt đối vùng dịch vụ lõi (`NotificationService`) khỏi các lỗi cú pháp. Hơn thế nữa, khi chuyển sang các nền tảng Framework lớn như Spring Boot, việc khởi tạo này sẽ được tự động hóa hoàn toàn nhờ bộ chứa IoC Container, biến `NotificationService` thành một thành phần hoàn toàn độc lập và dễ dàng kiểm thử tự động (Unit Test với Mockito).
