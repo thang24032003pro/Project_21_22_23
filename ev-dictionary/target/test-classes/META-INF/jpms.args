@@ -1,0 +1,4 @@
+--patch-module
+com.dict=_
+--add-reads
+com.dict=ALL-UNNAMED

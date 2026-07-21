@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dict.controller.DictionaryGuiController">
+    <top>
+        <HBox spacing="10" style="-fx-padding: 12; -fx-alignment: center-left; -fx-background-color: #2b5797;">
+            <Label text="Tiến Thắng" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="statusLabel" text="Sẵn sàng" style="-fx-text-fill: white;" />
+        </HBox>
+    </top>
+    <center>
+        <TabPane>
+            <Tab text="Người dùng">
+                <ScrollPane fitToWidth="true" fitToHeight="true">
+                    <VBox spacing="12" style="-fx-padding: 16;">
+                        <HBox spacing="10" style="-fx-alignment: center-left;">
+                            <Label text="Từ cần tra:" />
+                            <TextField fx:id="wordFieldUser" promptText="Nhập từ tiếng Anh" HBox.hgrow="ALWAYS" />
+                            <Button text="Tìm" onAction="#onLookupUser" />
+                        </HBox>
+                        <Label text="Gợi ý từ gần giống" />
+                        <ListView fx:id="suggestionListUser" prefHeight="120" />
+                        <TextArea fx:id="resultAreaUser" prefRowCount="16" wrapText="true" editable="false" style="-fx-font-family: 'Consolas'; -fx-font-size: 14px;" />
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+            <Tab text="Quản trị">
+                <ScrollPane fitToWidth="true" fitToHeight="true">
+                    <VBox spacing="16" style="-fx-padding: 16;">
+                        <Label text="Quản trị từ điển" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                        <HBox spacing="10" style="-fx-alignment: center-left;">
+                            <Label text="Từ cần tra:" />
+                            <TextField fx:id="wordFieldAdmin" promptText="Nhập từ tiếng Anh" HBox.hgrow="ALWAYS" />
+                            <Button text="Tìm" onAction="#onLookupAdmin" />
+                        </HBox>
+                        <Label text="Gợi ý từ gần giống" />
+                        <ListView fx:id="suggestionListAdmin" prefHeight="120" />
+                        <HBox spacing="10" style="-fx-alignment: center-left;">
+                            <Label text="Nhập đường dẫn file import:" />
+                            <TextField fx:id="importPathField" promptText="storage/import.def hoặc storage/import-folder" HBox.hgrow="ALWAYS" />
+                            <Button text="Nhập file" onAction="#onImportFromFile" />
+                        </HBox>
+                        <GridPane hgap="10" vgap="10">
+                            <Label text="Phiên âm:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                            <TextField fx:id="pronField" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                            <Label text="Loại từ:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                            <ComboBox fx:id="posCombo" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                            <Label text="Nghĩa:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                            <TextArea fx:id="meaningField" GridPane.rowIndex="2" GridPane.columnIndex="1" prefRowCount="3" />
+                            <Label text="Câu ví dụ (EN):" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                            <TextField fx:id="sentenceField" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+                            <Label text="Nghĩa (VI):" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+                            <TextField fx:id="sentenceViField" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+                            <Label text="Từ đồng nghĩa:" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+                            <TextField fx:id="synonymField" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+                            <Label text="Ghi chú: có thể nhập nhiều nghĩa bằng cách tách bằng ';'" GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="2" />
+                        </GridPane>
+                        <HBox spacing="10">
+                            <Button text="Lưu" onAction="#onSaveDefine" />
+                            <Button text="Xóa từ" onAction="#onDrop" />
+                            <Button text="Xuất tất cả" onAction="#onExport" />
+                            <Button text="Làm mới" onAction="#onClearAdmin" />
+                        </HBox>
+                        <HBox spacing="10" style="-fx-alignment: center-left;">
+                            <Label text="Xuất các từ:" />
+                            <TextField fx:id="exportWordsField" promptText="Nhập từ cách nhau bằng dấu phẩy" HBox.hgrow="ALWAYS" />
+                            <Button text="Xuất chọn" onAction="#onExportSelected" />
+                        </HBox>
+                        <Label text="Kết quả tra cứu / thông báo hành động:" />
+                        <TextArea fx:id="resultAreaAdmin" prefRowCount="12" wrapText="true" editable="false" style="-fx-font-family: 'Consolas'; -fx-font-size: 14px;" />
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>
