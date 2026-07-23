@@ -1,0 +1,12 @@
+phoneNumber,group,fullName,gender,address,dob,email
+0987654321,Family,Nguyen Van B,Nam,Hanoi,02/02/2002,b@example.com
+0901234567,Friend,Tran Thi Lan,Nu,Da Nang,15/03/1998,lan.tran@gmail.com
+0912345678,Work,Le Van Hoang,Nam,Ho Chi Minh,20/04/1995,hoang.le@company.com
+0923456789,Family,Pham Thi Huong,Nu,Hai Phong,08/11/2000,huong.pham@yahoo.com
+0934567890,School,Nguyen Minh Duc,Nam,Can Tho,25/06/2001,duc.nguyen@school.edu
+0945678901,Neighbor,Vu Thi Mai,Nu,Bac Giang,12/09/1992,mai.vu@gmail.com
+0956789012,Work,Do Anh Tuan,Nam,Ha Noi,01/12/1990,tuan.do@office.vn
+0967890123,Friend,Hoang Thi Hanh,Nu,Ninh Binh,18/05/1997,hanh.hoang@hotmail.com
+0978901234,Family,Nguyen Thi Bich,Nu,Quang Ninh,07/07/1994,bich.nguyen@gmail.com
+0989012345,School,Tran Van Khoa,Nam,Da Lat,30/08/2003,khoa.tran@edu.vn
+0990123456,Neighbor,Lam Thi Nhu,Nu,Long An,22/01/1996,nhu.lam@gmail.com
